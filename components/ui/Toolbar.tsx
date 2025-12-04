@@ -1,6 +1,7 @@
 'use client';
 
 import { useStore } from '@/store/useStore';
+import AIGeneratorModal from './AIGeneratorModal';
 
 export default function Toolbar() {
     const {
@@ -19,7 +20,8 @@ export default function Toolbar() {
         undo,
         redo,
         past,
-        future
+        future,
+        setAIModalOpen // Add this
     } = useStore();
 
     const handleDelete = () => {
@@ -30,7 +32,9 @@ export default function Toolbar() {
 
     return (
         <>
-            {/* Context Toolbar (Floating Property Panel) */}
+            <AIGeneratorModal />
+
+            {/* Context Toolbar ... */}
             {selectedId && (
                 <div className="absolute top-4 right-4 md:right-4 md:top-4 bg-gray-800/90 backdrop-blur p-3 rounded-xl border border-gray-600 shadow-xl flex flex-col gap-3 w-[90vw] max-w-[300px] md:w-auto z-50">
 
@@ -155,6 +159,12 @@ export default function Toolbar() {
                             className="text-xs bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded ml-2 transition-colors whitespace-nowrap"
                         >
                             全消去
+                        </button>
+                        <button
+                            onClick={() => setAIModalOpen(true)}
+                            className="text-xs bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-3 py-1 rounded ml-2 transition-all shadow-lg hover:shadow-blue-500/50 whitespace-nowrap flex items-center gap-1"
+                        >
+                            <span>✨</span> AI生成
                         </button>
                     </div>
 

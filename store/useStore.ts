@@ -53,6 +53,11 @@ type ProjectState = {
   clearScene: () => void;
   undo: () => void;
   redo: () => void;
+
+  // AI Generation
+  isAIModalOpen: boolean;
+  setAIModalOpen: (isOpen: boolean) => void;
+  loadLayout: (newUnits: RoomUnit[]) => void;
 };
 
 // Helper to create default walls for a room type
@@ -364,4 +369,13 @@ export const useStore = create<ProjectState>((set, get) => ({
       selectedWallId: null
     };
   }),
+
+  isAIModalOpen: false,
+  setAIModalOpen: (isOpen) => set({ isAIModalOpen: isOpen }),
+
+  loadLayout: (newUnits) => {
+    const { units, past } = get();
+    set({ past: [...past, units], future: [] });
+    set({ units: newUnits, selectedId: null, selectedWallId: null });
+  },
 }));
