@@ -177,18 +177,22 @@ export default function Toolbar() {
                     </div>
 
                     {/* System Actions */}
-                    <div className="flex gap-2 ml-auto md:ml-0">
+                    <div className="flex gap-2 ml-auto md:ml-0 shrink-0">
                         <button
                             onClick={clearScene}
-                            className="bg-gray-800 hover:bg-gray-700 text-gray-300 px-4 py-2 rounded-xl text-sm font-medium transition-colors whitespace-nowrap active:scale-95 border border-gray-700"
+                            className="bg-gray-800 hover:bg-gray-700 text-gray-300 p-3 md:px-4 md:py-2 rounded-xl text-sm font-medium transition-colors whitespace-nowrap active:scale-95 border border-gray-700"
+                            title="全消去"
                         >
-                            全消去
+                            <span className="md:hidden text-lg">🗑️</span>
+                            <span className="hidden md:inline">全消去</span>
                         </button>
                         <button
                             onClick={() => setAIModalOpen(true)}
-                            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-4 py-2 rounded-xl text-sm font-bold transition-all shadow-lg hover:shadow-blue-500/50 whitespace-nowrap flex items-center gap-2 active:scale-95"
+                            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white p-3 md:px-4 md:py-2 rounded-xl text-sm font-bold transition-all shadow-lg hover:shadow-blue-500/50 whitespace-nowrap flex items-center gap-2 active:scale-95"
+                            title="AI生成"
                         >
-                            <span>✨</span> AI
+                            <span className="text-lg">✨</span>
+                            <span className="hidden md:inline">AI</span>
                         </button>
                     </div>
                 </div>
