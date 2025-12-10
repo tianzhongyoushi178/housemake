@@ -4,7 +4,7 @@ import Toolbar from '@/components/ui/Toolbar';
 
 export default function Home() {
   return (
-    <main className="h-screen w-full bg-gray-900 relative">
+    <main className="h-[100dvh] w-full bg-gray-900 relative overflow-hidden">
       <Scene3D />
       <Toolbar />
       <div className="absolute top-4 right-4">
