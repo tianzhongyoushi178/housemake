@@ -35,102 +35,93 @@ export default function Toolbar() {
             <AIGeneratorModal />
 
             {/* Context Toolbar - Optimized for Mobile */}
-            {/* Context Toolbar - Optimized for Mobile */}
+            {/* Context Toolbar - Optimized for Mobile (Horizontal) */}
             {selectedId && (
-                <div className="absolute top-4 right-4 md:right-4 md:top-4 bg-gray-800/95 backdrop-blur p-3 md:p-4 rounded-xl border border-gray-600 shadow-xl flex flex-col gap-2 md:gap-4 w-auto max-w-[90vw] md:max-w-[320px] z-50">
+                <div className="absolute top-4 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-4 bg-gray-800/95 backdrop-blur p-2 rounded-xl border border-gray-600 shadow-xl flex flex-row items-center gap-3 w-[95vw] md:w-auto max-w-none md:max-w-none overflow-x-auto z-50 scrollbar-hide">
 
                     {/* Row 1: Basic Actions */}
-                    <div className="flex justify-between items-center gap-2">
-                        <span className="hidden md:block text-base font-bold text-blue-300">編集メニュー</span>
-                        <div className="flex gap-2 md:gap-3 ml-auto md:ml-0">
-                            <button
-                                onClick={() => rotateUnit(selectedId)}
-                                className="bg-yellow-600 hover:bg-yellow-500 text-white p-2 md:px-4 md:py-2 rounded-lg text-sm font-medium transition-colors shadow-sm active:scale-95"
-                                title="回転"
-                            >
-                                <span className="md:hidden text-lg">🔄</span>
-                                <span className="hidden md:inline">回転</span>
-                            </button>
-                            <button
-                                onClick={handleDelete}
-                                className="bg-red-600 hover:bg-red-500 text-white p-2 md:px-4 md:py-2 rounded-lg text-sm font-medium transition-colors shadow-sm active:scale-95"
-                                title="削除"
-                            >
-                                <span className="md:hidden text-lg">🗑️</span>
-                                <span className="hidden md:inline">削除</span>
-                            </button>
-                        </div>
+                    <div className="flex items-center gap-2 shrink-0">
+                        <span className="hidden md:block text-base font-bold text-blue-300 mr-2">編集メニュー</span>
+                        <button
+                            onClick={() => rotateUnit(selectedId)}
+                            className="bg-yellow-600 hover:bg-yellow-500 text-white p-2 md:px-4 md:py-2 rounded-lg text-sm font-medium transition-colors shadow-sm active:scale-95 shrink-0"
+                            title="回転"
+                        >
+                            <span className="md:hidden text-lg">🔄</span>
+                            <span className="hidden md:inline">回転</span>
+                        </button>
+                        <button
+                            onClick={handleDelete}
+                            className="bg-red-600 hover:bg-red-500 text-white p-2 md:px-4 md:py-2 rounded-lg text-sm font-medium transition-colors shadow-sm active:scale-95 shrink-0"
+                            title="削除"
+                        >
+                            <span className="md:hidden text-lg">🗑️</span>
+                            <span className="hidden md:inline">削除</span>
+                        </button>
                     </div>
 
-                    <div className="h-px bg-gray-600" />
+                    <div className="w-px h-8 bg-gray-600 shrink-0" />
 
                     {/* Row 2: Resize */}
-                    <div className="flex flex-col gap-1 md:gap-2">
-                        <span className="text-[10px] md:text-xs text-gray-400 font-medium">サイズ変更</span>
-                        <div className="flex justify-between gap-2 md:gap-4">
-                            <div className="flex items-center gap-1 md:gap-2 bg-gray-700/50 p-1.5 md:p-2 rounded-lg flex-1 justify-center">
-                                <span className="text-[10px] md:text-xs text-gray-300">幅</span>
-                                <button onClick={() => resizeUnit(selectedId, 0.91, 0)} className="bg-gray-600 hover:bg-gray-500 text-white w-7 h-7 md:w-8 md:h-8 rounded flex items-center justify-center text-base md:text-lg active:bg-gray-400">+</button>
-                                <button onClick={() => resizeUnit(selectedId, -0.91, 0)} className="bg-gray-600 hover:bg-gray-500 text-white w-7 h-7 md:w-8 md:h-8 rounded flex items-center justify-center text-base md:text-lg active:bg-gray-400">-</button>
-                            </div>
-                            <div className="flex items-center gap-1 md:gap-2 bg-gray-700/50 p-1.5 md:p-2 rounded-lg flex-1 justify-center">
-                                <span className="text-[10px] md:text-xs text-gray-300">奥</span>
-                                <button onClick={() => resizeUnit(selectedId, 0, 0.91)} className="bg-gray-600 hover:bg-gray-500 text-white w-7 h-7 md:w-8 md:h-8 rounded flex items-center justify-center text-base md:text-lg active:bg-gray-400">+</button>
-                                <button onClick={() => resizeUnit(selectedId, 0, -0.91)} className="bg-gray-600 hover:bg-gray-500 text-white w-7 h-7 md:w-8 md:h-8 rounded flex items-center justify-center text-base md:text-lg active:bg-gray-400">-</button>
-                            </div>
+                    <div className="flex items-center gap-2 shrink-0">
+                        <div className="flex items-center gap-1 bg-gray-700/50 p-1 rounded-lg">
+                            <span className="text-[10px] text-gray-300 px-1">幅</span>
+                            <button onClick={() => resizeUnit(selectedId, 0.91, 0)} className="bg-gray-600 hover:bg-gray-500 text-white w-7 h-7 rounded flex items-center justify-center text-base active:bg-gray-400">+</button>
+                            <button onClick={() => resizeUnit(selectedId, -0.91, 0)} className="bg-gray-600 hover:bg-gray-500 text-white w-7 h-7 rounded flex items-center justify-center text-base active:bg-gray-400">-</button>
+                        </div>
+                        <div className="flex items-center gap-1 bg-gray-700/50 p-1 rounded-lg">
+                            <span className="text-[10px] text-gray-300 px-1">奥</span>
+                            <button onClick={() => resizeUnit(selectedId, 0, 0.91)} className="bg-gray-600 hover:bg-gray-500 text-white w-7 h-7 rounded flex items-center justify-center text-base active:bg-gray-400">+</button>
+                            <button onClick={() => resizeUnit(selectedId, 0, -0.91)} className="bg-gray-600 hover:bg-gray-500 text-white w-7 h-7 rounded flex items-center justify-center text-base active:bg-gray-400">-</button>
                         </div>
                     </div>
 
-                    <div className="h-px bg-gray-600" />
+                    <div className="w-px h-8 bg-gray-600 shrink-0" />
 
                     {/* Row 3: Toggle Walls */}
-                    <div className="flex flex-col gap-1 md:gap-2">
-                        <span className="text-[10px] md:text-xs text-gray-400 font-medium">壁の表示切替</span>
-                        <div className="grid grid-cols-4 gap-1 md:gap-2">
-                            {['top', 'bottom', 'left', 'right'].map((dir) => {
-                                const unit = useStore.getState().units.find(u => u.id === selectedId);
-                                let hasWall = false;
-                                if (unit) {
-                                    const halfW = unit.width / 2;
-                                    const halfD = unit.depth / 2;
-                                    hasWall = unit.walls.some(w => {
-                                        if (dir === 'top') return Math.abs(w.start[1] - halfD) < 0.01;
-                                        if (dir === 'bottom') return Math.abs(w.start[1] + halfD) < 0.01;
-                                        if (dir === 'right') return Math.abs(w.start[0] - halfW) < 0.01;
-                                        if (dir === 'left') return Math.abs(w.start[0] + halfW) < 0.01;
-                                        return false;
-                                    });
-                                }
+                    <div className="flex items-center gap-1 shrink-0">
+                        {['top', 'bottom', 'left', 'right'].map((dir) => {
+                            const unit = useStore.getState().units.find(u => u.id === selectedId);
+                            let hasWall = false;
+                            if (unit) {
+                                const halfW = unit.width / 2;
+                                const halfD = unit.depth / 2;
+                                hasWall = unit.walls.some(w => {
+                                    if (dir === 'top') return Math.abs(w.start[1] - halfD) < 0.01;
+                                    if (dir === 'bottom') return Math.abs(w.start[1] + halfD) < 0.01;
+                                    if (dir === 'right') return Math.abs(w.start[0] - halfW) < 0.01;
+                                    if (dir === 'left') return Math.abs(w.start[0] + halfW) < 0.01;
+                                    return false;
+                                });
+                            }
 
-                                const labelMap: { [key: string]: string } = { top: '上', bottom: '下', left: '左', right: '右' };
+                            const labelMap: { [key: string]: string } = { top: '上', bottom: '下', left: '左', right: '右' };
 
-                                return (
-                                    <button
-                                        key={dir}
-                                        onClick={() => toggleWallOnUnit(selectedId, dir as any)}
-                                        className={`py-1.5 md:py-2 rounded-lg text-xs md:text-sm font-medium transition-all active:scale-95 ${hasWall
-                                            ? 'bg-green-600 hover:bg-green-500 text-white shadow-sm'
-                                            : 'bg-gray-700 hover:bg-gray-600 text-gray-400'
-                                            }`}
-                                    >
-                                        {labelMap[dir]}
-                                    </button>
-                                );
-                            })}
-                        </div>
+                            return (
+                                <button
+                                    key={dir}
+                                    onClick={() => toggleWallOnUnit(selectedId, dir as any)}
+                                    className={`w-7 h-7 rounded flex items-center justify-center text-[10px] font-medium transition-all active:scale-95 ${hasWall
+                                        ? 'bg-green-600 hover:bg-green-500 text-white shadow-sm'
+                                        : 'bg-gray-700 hover:bg-gray-600 text-gray-400'
+                                        }`}
+                                    title={`壁切り替え: ${labelMap[dir]}`}
+                                >
+                                    {labelMap[dir]}
+                                </button>
+                            );
+                        })}
                     </div>
 
                     {/* Row 4: Wall Specific Actions */}
                     {selectedWallId && (
                         <>
-                            <div className="h-px bg-gray-600" />
-                            <div className="flex flex-col gap-1 md:gap-2 bg-gray-700/50 p-2 md:p-3 rounded-lg border border-gray-600">
-                                <span className="text-[10px] md:text-xs text-red-300 font-bold">選択中の壁を編集</span>
-                                <div className="flex gap-1 md:gap-2 justify-end">
-                                    <button onClick={() => removeWallFromUnit(selectedId, selectedWallId)} className="bg-red-500 hover:bg-red-400 text-white px-2 py-1.5 md:px-3 md:py-2 rounded-lg text-[10px] md:text-xs font-medium shadow-sm active:scale-95">削除</button>
-                                    <button onClick={() => addOpeningToUnitWall(selectedId, selectedWallId, 'door')} className="bg-indigo-600 hover:bg-indigo-500 text-white px-2 py-1.5 md:px-3 md:py-2 rounded-lg text-[10px] md:text-xs font-medium shadow-sm active:scale-95">+ドア</button>
-                                    <button onClick={() => addOpeningToUnitWall(selectedId, selectedWallId, 'window')} className="bg-blue-500 hover:bg-blue-400 text-white px-2 py-1.5 md:px-3 md:py-2 rounded-lg text-[10px] md:text-xs font-medium shadow-sm active:scale-95">+窓</button>
-                                </div>
+                            <div className="w-px h-8 bg-gray-600 shrink-0" />
+                            <div className="flex items-center gap-2 shrink-0 bg-gray-700/50 p-1 rounded-lg border border-gray-600">
+                                <span className="text-[10px] text-red-300 font-bold px-1">壁</span>
+                                <button onClick={() => removeWallFromUnit(selectedId, selectedWallId)} className="bg-red-500 hover:bg-red-400 text-white px-2 py-1 rounded text-[10px] font-medium shadow-sm active:scale-95">削除</button>
+                                <button onClick={() => addOpeningToUnitWall(selectedId, selectedWallId, 'door')} className="bg-indigo-600 hover:bg-indigo-500 text-white px-2 py-1 rounded text-[10px] font-medium shadow-sm active:scale-95">+ドア</button>
+                                <button onClick={() => addOpeningToUnitWall(selectedId, selectedWallId, 'window')} className="bg-blue-500 hover:bg-blue-400 text-white px-2 py-1 rounded text-[10px] font-medium shadow-sm active:scale-95">+窓</button>
                             </div>
                         </>
                     )}
