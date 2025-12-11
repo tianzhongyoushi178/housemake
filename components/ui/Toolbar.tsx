@@ -35,24 +35,29 @@ export default function Toolbar() {
             <AIGeneratorModal />
 
             {/* Context Toolbar - Optimized for Mobile */}
+            {/* Context Toolbar - Optimized for Mobile */}
             {selectedId && (
-                <div className="absolute top-4 right-4 md:right-4 md:top-4 bg-gray-800/95 backdrop-blur p-4 rounded-xl border border-gray-600 shadow-xl flex flex-col gap-4 w-[90vw] max-w-[320px] md:w-auto z-50">
+                <div className="absolute top-4 right-4 md:right-4 md:top-4 bg-gray-800/95 backdrop-blur p-3 md:p-4 rounded-xl border border-gray-600 shadow-xl flex flex-col gap-2 md:gap-4 w-auto max-w-[90vw] md:max-w-[320px] z-50">
 
                     {/* Row 1: Basic Actions */}
-                    <div className="flex justify-between items-center">
-                        <span className="text-base font-bold text-blue-300">編集メニュー</span>
-                        <div className="flex gap-3">
+                    <div className="flex justify-between items-center gap-2">
+                        <span className="hidden md:block text-base font-bold text-blue-300">編集メニュー</span>
+                        <div className="flex gap-2 md:gap-3 ml-auto md:ml-0">
                             <button
                                 onClick={() => rotateUnit(selectedId)}
-                                className="bg-yellow-600 hover:bg-yellow-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm active:scale-95"
+                                className="bg-yellow-600 hover:bg-yellow-500 text-white p-2 md:px-4 md:py-2 rounded-lg text-sm font-medium transition-colors shadow-sm active:scale-95"
+                                title="回転"
                             >
-                                回転
+                                <span className="md:hidden text-lg">🔄</span>
+                                <span className="hidden md:inline">回転</span>
                             </button>
                             <button
                                 onClick={handleDelete}
-                                className="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm active:scale-95"
+                                className="bg-red-600 hover:bg-red-500 text-white p-2 md:px-4 md:py-2 rounded-lg text-sm font-medium transition-colors shadow-sm active:scale-95"
+                                title="削除"
                             >
-                                削除
+                                <span className="md:hidden text-lg">🗑️</span>
+                                <span className="hidden md:inline">削除</span>
                             </button>
                         </div>
                     </div>
@@ -60,18 +65,18 @@ export default function Toolbar() {
                     <div className="h-px bg-gray-600" />
 
                     {/* Row 2: Resize */}
-                    <div className="flex flex-col gap-2">
-                        <span className="text-xs text-gray-400 font-medium">サイズ変更</span>
-                        <div className="flex justify-between gap-4">
-                            <div className="flex items-center gap-2 bg-gray-700/50 p-2 rounded-lg flex-1 justify-center">
-                                <span className="text-xs text-gray-300">幅</span>
-                                <button onClick={() => resizeUnit(selectedId, 0.91, 0)} className="bg-gray-600 hover:bg-gray-500 text-white w-8 h-8 rounded flex items-center justify-center text-lg active:bg-gray-400">+</button>
-                                <button onClick={() => resizeUnit(selectedId, -0.91, 0)} className="bg-gray-600 hover:bg-gray-500 text-white w-8 h-8 rounded flex items-center justify-center text-lg active:bg-gray-400">-</button>
+                    <div className="flex flex-col gap-1 md:gap-2">
+                        <span className="text-[10px] md:text-xs text-gray-400 font-medium">サイズ変更</span>
+                        <div className="flex justify-between gap-2 md:gap-4">
+                            <div className="flex items-center gap-1 md:gap-2 bg-gray-700/50 p-1.5 md:p-2 rounded-lg flex-1 justify-center">
+                                <span className="text-[10px] md:text-xs text-gray-300">幅</span>
+                                <button onClick={() => resizeUnit(selectedId, 0.91, 0)} className="bg-gray-600 hover:bg-gray-500 text-white w-7 h-7 md:w-8 md:h-8 rounded flex items-center justify-center text-base md:text-lg active:bg-gray-400">+</button>
+                                <button onClick={() => resizeUnit(selectedId, -0.91, 0)} className="bg-gray-600 hover:bg-gray-500 text-white w-7 h-7 md:w-8 md:h-8 rounded flex items-center justify-center text-base md:text-lg active:bg-gray-400">-</button>
                             </div>
-                            <div className="flex items-center gap-2 bg-gray-700/50 p-2 rounded-lg flex-1 justify-center">
-                                <span className="text-xs text-gray-300">奥</span>
-                                <button onClick={() => resizeUnit(selectedId, 0, 0.91)} className="bg-gray-600 hover:bg-gray-500 text-white w-8 h-8 rounded flex items-center justify-center text-lg active:bg-gray-400">+</button>
-                                <button onClick={() => resizeUnit(selectedId, 0, -0.91)} className="bg-gray-600 hover:bg-gray-500 text-white w-8 h-8 rounded flex items-center justify-center text-lg active:bg-gray-400">-</button>
+                            <div className="flex items-center gap-1 md:gap-2 bg-gray-700/50 p-1.5 md:p-2 rounded-lg flex-1 justify-center">
+                                <span className="text-[10px] md:text-xs text-gray-300">奥</span>
+                                <button onClick={() => resizeUnit(selectedId, 0, 0.91)} className="bg-gray-600 hover:bg-gray-500 text-white w-7 h-7 md:w-8 md:h-8 rounded flex items-center justify-center text-base md:text-lg active:bg-gray-400">+</button>
+                                <button onClick={() => resizeUnit(selectedId, 0, -0.91)} className="bg-gray-600 hover:bg-gray-500 text-white w-7 h-7 md:w-8 md:h-8 rounded flex items-center justify-center text-base md:text-lg active:bg-gray-400">-</button>
                             </div>
                         </div>
                     </div>
@@ -79,9 +84,9 @@ export default function Toolbar() {
                     <div className="h-px bg-gray-600" />
 
                     {/* Row 3: Toggle Walls */}
-                    <div className="flex flex-col gap-2">
-                        <span className="text-xs text-gray-400 font-medium">壁の表示切替</span>
-                        <div className="grid grid-cols-4 gap-2">
+                    <div className="flex flex-col gap-1 md:gap-2">
+                        <span className="text-[10px] md:text-xs text-gray-400 font-medium">壁の表示切替</span>
+                        <div className="grid grid-cols-4 gap-1 md:gap-2">
                             {['top', 'bottom', 'left', 'right'].map((dir) => {
                                 const unit = useStore.getState().units.find(u => u.id === selectedId);
                                 let hasWall = false;
@@ -103,7 +108,7 @@ export default function Toolbar() {
                                     <button
                                         key={dir}
                                         onClick={() => toggleWallOnUnit(selectedId, dir as any)}
-                                        className={`py-2 rounded-lg text-sm font-medium transition-all active:scale-95 ${hasWall
+                                        className={`py-1.5 md:py-2 rounded-lg text-xs md:text-sm font-medium transition-all active:scale-95 ${hasWall
                                             ? 'bg-green-600 hover:bg-green-500 text-white shadow-sm'
                                             : 'bg-gray-700 hover:bg-gray-600 text-gray-400'
                                             }`}
@@ -119,12 +124,12 @@ export default function Toolbar() {
                     {selectedWallId && (
                         <>
                             <div className="h-px bg-gray-600" />
-                            <div className="flex flex-col gap-2 bg-gray-700/50 p-3 rounded-lg border border-gray-600">
-                                <span className="text-xs text-red-300 font-bold">選択中の壁を編集</span>
-                                <div className="flex gap-2 justify-end">
-                                    <button onClick={() => removeWallFromUnit(selectedId, selectedWallId)} className="bg-red-500 hover:bg-red-400 text-white px-3 py-2 rounded-lg text-xs font-medium shadow-sm active:scale-95">削除</button>
-                                    <button onClick={() => addOpeningToUnitWall(selectedId, selectedWallId, 'door')} className="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-2 rounded-lg text-xs font-medium shadow-sm active:scale-95">+ドア</button>
-                                    <button onClick={() => addOpeningToUnitWall(selectedId, selectedWallId, 'window')} className="bg-blue-500 hover:bg-blue-400 text-white px-3 py-2 rounded-lg text-xs font-medium shadow-sm active:scale-95">+窓</button>
+                            <div className="flex flex-col gap-1 md:gap-2 bg-gray-700/50 p-2 md:p-3 rounded-lg border border-gray-600">
+                                <span className="text-[10px] md:text-xs text-red-300 font-bold">選択中の壁を編集</span>
+                                <div className="flex gap-1 md:gap-2 justify-end">
+                                    <button onClick={() => removeWallFromUnit(selectedId, selectedWallId)} className="bg-red-500 hover:bg-red-400 text-white px-2 py-1.5 md:px-3 md:py-2 rounded-lg text-[10px] md:text-xs font-medium shadow-sm active:scale-95">削除</button>
+                                    <button onClick={() => addOpeningToUnitWall(selectedId, selectedWallId, 'door')} className="bg-indigo-600 hover:bg-indigo-500 text-white px-2 py-1.5 md:px-3 md:py-2 rounded-lg text-[10px] md:text-xs font-medium shadow-sm active:scale-95">+ドア</button>
+                                    <button onClick={() => addOpeningToUnitWall(selectedId, selectedWallId, 'window')} className="bg-blue-500 hover:bg-blue-400 text-white px-2 py-1.5 md:px-3 md:py-2 rounded-lg text-[10px] md:text-xs font-medium shadow-sm active:scale-95">+窓</button>
                                 </div>
                             </div>
                         </>
